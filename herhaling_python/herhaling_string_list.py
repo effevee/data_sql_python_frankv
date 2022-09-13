@@ -74,3 +74,6 @@ print(een_string)
 test = 'dit is een string met veel      spaties'
 print(test.split()) # zonder argument worden alle spaties verwijderd
 print(test.split(' ')) # met argument 1 spatie gebeurt dat niet
+
+# lengte van string of lijst
+print('lengte lijst: ', len(lijst))

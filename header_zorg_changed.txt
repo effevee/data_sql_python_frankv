@@ -1,0 +1,72 @@
+Datum
+1: Hieronder willen we graag jouw mening vragen over de zorgcursus die je dit schooljaar volgde aan ons cvo.: Wie is de lesgever?
+1: Hieronder willen we graag jouw mening vragen over de zorgcursus die je dit schooljaar volgde aan ons cvo.: Welke cursus wil je beoordelen?
+2.1: Hoe tevreden ben je als cursist?: Stemt het programma van jouw cursus overeen met wat je ervan verwachtte?
+2.2: Hoe tevreden ben je als cursist?: Heeft de leerkracht een duidelijk overzicht gegeven van wat je tijdens deze cursus zal leren?
+2.3: Hoe tevreden ben je als cursist?: Werd het cursusmateriaal (syllabus, handboek, kopieën,...) tijdig ter beschikking gesteld?
+2.4: Hoe tevreden ben je als cursist?: Hoe beoordeel je de kwaliteit van het cursusmateriaal?
+2.5: Hoe tevreden ben je als cursist?: Slaagt de leerkracht erin zijn of haar lessen boeiend te maken?
+2.6: Hoe tevreden ben je als cursist?: Staat de leerkracht open voor vragen en suggesties i.v.m. de lesinhoud?
+2.7: Hoe tevreden ben je als cursist?: Herneemt de leerkracht indien nodig, of op vraag, moeilijke delen en licht hij of zij ze extra toe?
+2.8: Hoe tevreden ben je als cursist?: Wordt er voldoende aandacht besteed aan oefeningen maken?
+2.9: Hoe tevreden ben je als cursist?: Wordt er voldoende rekening gehouden met het tempo van de verschillende cursisten in de les?
+2.10: Hoe tevreden ben je als cursist?: Is de leerkracht op tijd aanwezig in de les?
+2.11: Hoe tevreden ben je als cursist?: Worden de lessen op het voorziene tijdstip beëindigd?
+3: In de rubriek: hoe tevreden ben je als cursist, was je minder positief over één of meerdere aspecten. Kan je dit kort toelichten a.u.b.?
+4: Via informatie uit publiciteitsbladen of pers
+4: Via folder van het centrum in brievenbus
+4: Via affiche/folder van het centrum op een andere plaats
+4: Via de dagschool
+4: Via kennissen, vrienden of familie
+4: Via de website van het centrum
+4: Via sociale media (Facebook, Twitter ...)
+4: Op een andere manier
+5: Wil je in de toekomst een praktijk of creatieve cursus aan Hét CVO volgen?
+8: Centrale verwarming & sanitair
+8: Elektriciteit
+8: Fietshersteller
+8: Houtbewerking
+8: Klussen
+8: Lasser-monteerder
+8: Metselaar
+8: Schilderen & behangen
+8: Vloerder-tegelzetter
+8: Aangepast koken
+8: Bakken
+8: Basis koken
+8: Gastvrij koken
+8: Lekker voor alledag koken
+8: Trendy koken
+8: Bloemschikken
+8: Decoratief in de woning
+8: Naaien
+8: Patroontekenen
+9: Wil je in de toekomst een taalcursus volgen aan Hét CVO?
+10: Frans
+10: Engels
+10: Duits
+10: Italiaans
+10: Spaans
+10: Portugees
+10: Russisch
+10: Arabisch
+10: Chinees
+11: Wil je in de toekomst een ICT-cursus volgen aan Hét CVO?
+12: Voor de beginner
+12: Internet
+12: Apple (Mac & iPhone/iPad)
+12: Smartphones & tablets
+12: Multimedia
+12: Fotobewerking
+12: Filmbewerking
+12: Autocad
+12: MS Office
+12: Druk-en printwerk ontwikkelen
+12: ICT-problemen oplossen
+12: ICT en administratie (TKO)
+12: Programmeren
+12: Hardware
+13: Indien je favoriete cursus wordt ingericht en je wenst daarvan op de hoogte worden gesteld, dan kan je hieronder je e-mail adres noteren:
+14: Heb je naast de aangeboden voorstellen nog andere cursusvoorstellen?
+15: Kan je hieronder 2 positieve kenmerken noteren over Hét CVO?
+16: Kan je hieronder 2 werkpunten noteren voor Hét CVO?
