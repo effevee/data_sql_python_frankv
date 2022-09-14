@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
+Created on Wed Sep 14 18:11:34 2022
 
-This is a temporary script file.
+@author: frank
 """
+
 import math
 
 naam = input('Wat is uw naam?\n')
