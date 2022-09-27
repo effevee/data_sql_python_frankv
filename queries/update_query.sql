@@ -1,0 +1,1 @@
+UPDATE air_pol_measurement SET station_id = 124 WHERE id = 1;
