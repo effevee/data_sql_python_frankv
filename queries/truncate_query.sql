@@ -1,0 +1,1 @@
+TRUNCATE air_pol_measurement;

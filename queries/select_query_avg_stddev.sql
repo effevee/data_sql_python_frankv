@@ -1,0 +1,1 @@
+select avg(average_val),stddev(average_val) from air_pol_measurement;

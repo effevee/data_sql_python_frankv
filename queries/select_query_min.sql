@@ -1,0 +1,1 @@
+select min(measure_type_id),min(sensor_state) from air_pol_measurement;
