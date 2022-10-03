@@ -16,8 +16,8 @@ passwd='hetcvo.be'
 host='127.0.0.1'
 db='proto1'
 
-select_query='''select measure_time,avg(average_val) from air_pol_measurement \
-    where station_id=101 and measure_type_id=1 group by measure_time;'''
+select_query='''select measure_time as time,avg(average_val) as average_val \
+    from air_pol_measurement where station_id=101 and measure_type_id=1 group by measure_time'''
     
 try:
     # connectie maken met mysql database proto1 als gebruiker dev1
@@ -27,7 +27,11 @@ try:
     df=pd.read_sql(select_query,cn)
 
     # tonen enkele records
-    df.head()
+    print(df.head())
+    
+    # tonen lijngrafiek
+    df.plot(x='time', y='average_val')
+    
 except Exception as E:
     print('problemen met lezen uit databank')
     print(E)

@@ -25,6 +25,7 @@ cn=sql.connect(db=db,user=user,password=passwd,host=host)
 cr=cn.cursor()
 print('got cursor:',cr)
 
+# dataframes per 10000 records
 df_chunks=pd.read_csv('/home/frank/Documents/data_sql_python_frankv/Measurement_info.csv',\
                dtype={'Station code':'int8', 'Item code':'int8', 'Instrument status':'int8', \
                       'Average value':'float16','Measurement date':'string'},\
@@ -32,6 +33,7 @@ df_chunks=pd.read_csv('/home/frank/Documents/data_sql_python_frankv/Measurement_
 
 tel=0
 for chunk in df_chunks:
+    # zip([2,3,6],[1,99,12]) --> (2,1),(3,99),(6,12)
     data=list(zip(chunk['Measurement date'],chunk['Station code'],\
                   chunk['Item code'],chunk['Average value'],\
                   chunk['Instrument status']))
@@ -39,9 +41,10 @@ for chunk in df_chunks:
         cr.executemany(insert_query, data)
         cn.commit()
         tel+=1
-        print('Ok voor chunk',tel)
+        print('Chunk',tel,'committed')
     except Exception as E:
         print('problemen met schrijven naar databank')
+        print('Chunk',tel,'not committed')
         print(E)
     
 cr.close() # cursor afsluiten
