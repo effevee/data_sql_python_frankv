@@ -7,22 +7,13 @@ Created on Mon Oct  3 20:51:24 2022
 """
 
 import pandas as pd
-import mysql.connector as sql
+from db_actions import actions
 
-# niet veilig (intern gebruik)
-# eventueel gebruiker en paswoord opvragen via input
-user='dev1'
-passwd='hetcvo_2022.be'
-host='127.0.0.1'
-db='proto1'
+#constructor klasse oproepen met default waarden voor connectie
+dba=actions()
 
-insert_query='''INSERT INTO measurement_type(id,name,unit) values(%s,%s,%s)'''
-
-# connectie maken met mysql database proto1 als gebruiker dev1
-cn=sql.connect(db=db,user=user,password=passwd,host=host)
-# om insert queries te kunnen uitvoeren heb je een cursor object nodig
-cr=cn.cursor()
-print('got cursor:',cr)
+# connecteren met de databank
+dba.connect()
 
 # inlezen csv in dataframe
 df=pd.read_csv('/home/frank/Documents/data_sql_python_frankv/Measurement_item_info.csv')
@@ -36,13 +27,12 @@ df_type_measurement.columns=['id','name','unit']
 # kolom gegevens in lijst steken
 data=list(zip(df_type_measurement['id'],df_type_measurement['name'],df_type_measurement['unit']))
 
-try:
-    cr.executemany(insert_query, data)
-    cn.commit()
-except Exception as E:
-    print('problemen met schrijven naar databank')
-    print(E)
+# insert query
+insert_query='''INSERT INTO measure_type(id,name,unit) values(%s,%s,%s)'''
+
+# gegevens webschrijven naar tabel
+dba.write_small_df_to_dbtable(insert_query, data)
     
-cr.close() # cursor afsluiten
-cn.disconnect()  # connectie met database afsluiten
+# database afsluiten
+dba.quitdb()
           

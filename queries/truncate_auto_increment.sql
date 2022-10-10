@@ -1,2 +1,3 @@
-alter table air_pol_measurement auto_increment=1;
-truncate air_pol_measurement;
+alter table station_info auto_increment=1;
+truncate station_info;
+select * from station_info;
