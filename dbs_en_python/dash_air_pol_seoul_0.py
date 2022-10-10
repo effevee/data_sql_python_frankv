@@ -16,10 +16,10 @@ dba=actions(usr='usr1',pwd='hetcvo.be')
 dba.connect()
 
 # data frame voor dropdown measure type
-df_measure_type=dba.read_df_from_dbtable('select * from measure_type')
+df_measure_type=dba.read_df_from_dbtable('select * from measure_type',())
 
 # data frame voor dropdown station
-df_station_info=dba.read_df_from_dbtable('select * from station_info')
+df_station_info=dba.read_df_from_dbtable('select * from station_info',())
 
 # database afsluiten
 dba.quitdb()

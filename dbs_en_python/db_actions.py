@@ -48,12 +48,15 @@ class actions:
                 return False
             
     # method om een select query op een database tabel in een dataframe te stoppen
-    def read_df_from_dbtable(self,query):
+    def read_df_from_dbtable(self,query,data):
         if self._cn is not None:
             try:
-                df=pd.read_sql(query,self._cn)
+                df=pd.read_sql(query,self._cn,params=data)
                 return df
             except Exception as E:
                 print('Probleem lezen data')
                 print(E)
                 return None
+        else:
+            return None
+        
