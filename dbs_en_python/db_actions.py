@@ -46,6 +46,8 @@ class actions:
                 print('Probleem schrijven data')
                 print(E)
                 return False
+        else:
+            return False
             
     # method om een select query op een database tabel in een dataframe te stoppen
     def read_df_from_dbtable(self,query,data):
