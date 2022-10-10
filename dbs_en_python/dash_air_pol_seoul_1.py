@@ -47,10 +47,15 @@ try:
     # figuur : Yas -> avg(avgerage_val) X-as -> measure_time
     app = Dash(__name__)
     
-    app.layout = html.Div([html.Div([
-        dcc.Dropdown(df_measurement_type.name.to_list(),df_measurement_type.name.to_list()[0],id='type-dropdown'),
-        dcc.Dropdown(df_station_info.name.to_list(),df_station_info.name.to_list()[0],id='station-dropdown'),
-    ]),
+    app.layout = html.Div([
+        html.Div([
+            dcc.Dropdown(df_measurement_type.name.to_list(),
+                         df_measurement_type.name.to_list()[0],
+                         id='type-dropdown'),
+            dcc.Dropdown(df_station_info.name.to_list(),
+                         df_station_info.name.to_list()[0],
+                         id='station-dropdown'),
+            ]),
         html.Div([dcc.Graph(id='dd-output-container-graph')])
     ])
 
