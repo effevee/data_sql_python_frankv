@@ -28,7 +28,7 @@ dba.quitdb()
 # dropdown box measurement_type
 # dropdown box station_info
 # figuur : Yas -> avg(avgerage_val) X-as -> measure_time
-app = Dash(__name__)
+app = Dash(__name__) # maken dash object
 
 app.layout = html.Div([
     dcc.Dropdown(df_measure_type.name.to_list(),
@@ -38,7 +38,8 @@ app.layout = html.Div([
                  placeholder='Select station',
                  id='station-dropdown'),
     html.Div(id='dd-output-container')
-])
+])  # layout van de app, is een html pagina met een div met daarin 2
+    # dropdown boxen en een div met tekst van de geselecteerde opties
 
 @app.callback(
     Output('dd-output-container', 'children'),
@@ -49,5 +50,13 @@ app.layout = html.Div([
 def update_output(value1, value2):
     return f'You selected {value1} and {value2}'
 
+# het callback blok (@ is een oython decorator)
+# wordt actief als de dropdown boxen wijzigen (Input)
+# met update_output wordt er iets gedaan met de waarden van de dropdowns
+# de geretourneerde waarde wordt doorgegeven aan Output (dd-output-container)
+
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True)  # opstarten van de webapp server
+    
+# je kan het resultaat raadplegen in een browser op url http://localhost:8050
+    
