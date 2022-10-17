@@ -24,17 +24,7 @@ df_station_info=dba.read_df_from_dbtable('select * from station_info',())
 
 # database afsluiten
 dba.quitdb()
-
-
-# select query voor de grafiek
-select_query_values='''select measure_time,avg(average_val) 
-    from air_pol_measurement,measure_type,station_info
-    where measure_type.name='%s' and station_info.name='%s' 
-    and measure_type.id=air_pol_measurement.measure_type_id 
-    and station_info.id=air_pol_measurement.station_id 
-    group by measure_time'''
-
-    
+   
 # Dash layout :
 # dropdown box measurement_type
 # dropdown box station_info
@@ -43,11 +33,9 @@ app = Dash(__name__)
 
 app.layout = html.Div([
     html.Div([
-        dcc.Dropdown(df_measure_type.name.to_list(),
-                     df_measure_type.name.to_list()[0],
+        dcc.Dropdown(list(df_measure_type.name),placeholder='Select type',
                      id='type-dropdown'),
-        dcc.Dropdown(df_station_info.name.to_list(),
-                     df_station_info.name.to_list()[0],
+        dcc.Dropdown(list(df_station_info.name),placeholder='Select station',
                      id='station-dropdown'),
         ]),
     html.Div([dcc.Graph(id='dd-output-container-graph')])
@@ -59,21 +47,28 @@ app.layout = html.Div([
     Input('station-dropdown', 'value')
     )
 
-def update_output(value1,value2):
-    fig=None
-    types=df_measure_type.name.to_list()
-    stations=df_station_info.name.to_list()
+def update_output(sensor,station):
     # beide comboboxen gevuld
-    if (value1 in types) and (value2 in stations):
+    if sensor != 'Select type' and station != 'Select station':
         # connectie met databank opzetten
         dba.connect()
+        # select query voor de grafiek
+        select_query_values='''select measure_time,avg(average_val) 
+            from air_pol_measurement,measure_type,station_info
+            where measure_type.name=%s and station_info.name=%s 
+            and measure_type.id=air_pol_measurement.measure_type_id 
+            and station_info.id=air_pol_measurement.station_id 
+            group by measure_time'''
         # dataframe maken met sql query
-        df_values=dba.read_df_from_dbtable(select_query_values%(value1,value2),())
+        df_values=dba.read_df_from_dbtable(select_query_values,(sensor,station))
         # connectie met databank verbreken
         dba.quitdb()
         # figuur maken
         fig=px.line(df_values,x='measure_time',y='avg(average_val)')
-    return fig
+        fig.data[0].line.color='#ff0000'
+        return fig
+    else:
+        return None
 
 if __name__ == '__main__':
     app.run_server(debug=True)

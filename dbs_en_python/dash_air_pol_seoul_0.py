@@ -31,11 +31,9 @@ dba.quitdb()
 app = Dash(__name__) # maken dash object
 
 app.layout = html.Div([
-    dcc.Dropdown(df_measure_type.name.to_list(),
-                 placeholder='Select type',
+    dcc.Dropdown(list(df_measure_type.name),placeholder='Select type',
                  id='type-dropdown'),
-    dcc.Dropdown(df_station_info.name.to_list(),
-                 placeholder='Select station',
+    dcc.Dropdown(list(df_station_info.name),placeholder='Select station',
                  id='station-dropdown'),
     html.Div(id='dd-output-container')
 ])  # layout van de app, is een html pagina met een div met daarin 2
@@ -50,7 +48,7 @@ app.layout = html.Div([
 def update_output(value1, value2):
     return f'You selected {value1} and {value2}'
 
-# het callback blok (@ is een oython decorator)
+# het callback blok (@ is een python decorator)
 # wordt actief als de dropdown boxen wijzigen (Input)
 # met update_output wordt er iets gedaan met de waarden van de dropdowns
 # de geretourneerde waarde wordt doorgegeven aan Output (dd-output-container)
