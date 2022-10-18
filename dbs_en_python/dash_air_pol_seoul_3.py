@@ -8,7 +8,7 @@ Created on Sun Oct 16 09:33:13 2022
 
 from dash import Dash, dcc, html, Input, Output
 from db_actions import actions
-from store_data import store_df
+from store_data import store_df  # om dataframes in het geheugen te houden
 import pandas as pd
 import plotly.express as px
 
@@ -27,7 +27,7 @@ df_station_info=dba.read_df_from_dbtable('select * from station_info',())
 # database afsluiten
 dba.quitdb()
 
-# instance aanmaken voor opslaan van 2 dataframes
+# instance aanmaken voor het bijhouden van 2 dataframes
 sdfs=store_df(2)
 
 # Dash layout :
@@ -61,8 +61,8 @@ app.layout = html.Div([
         html.Button('Correlatie', id='corr-btn', n_clicks=0),
         dcc.Graph(id='corr-graph'),
         html.Div(id='container-data')
-        ],style={'text-align':'center'})
-    ])
+        ])
+    ],style={'text-align':'center'})
     
 @app.callback(
     Output('dd-output-container-graph-1', 'figure'),
@@ -70,9 +70,9 @@ app.layout = html.Div([
     Input('station-dropdown-1', 'value'),
    )
 
-def update_output_1(sensor1,station1):
+def update_output_1(sensor,station):
     # beide comboboxen gevuld
-    if sensor1 != 'Select type' and station1 != 'Select station':
+    if sensor != 'Select type' and station != 'Select station':
         # connectie met databank opzetten
         dba.connect()
         # select query voor de grafiek
@@ -83,11 +83,11 @@ def update_output_1(sensor1,station1):
             and station_info.id=air_pol_measurement.station_id 
             group by measure_time'''
         # dataframe maken met sql query
-        df_values=dba.read_df_from_dbtable(select_query_values,(sensor1,station1))
-        # connectie met databank verbreken
-        dba.quitdb()
+        df_values=dba.read_df_from_dbtable(select_query_values,(sensor,station))
         # dataframe bewaren voor correlatie grafiek
         sdfs.set_df(0, df_values)
+        # connectie met databank verbreken
+        dba.quitdb()
         # figuur maken
         fig1=px.line(df_values,x='measure_time',y='avg(average_val)')
         fig1.data[0].line.color='#ff0000'
@@ -101,9 +101,9 @@ def update_output_1(sensor1,station1):
     Input('station-dropdown-2', 'value'),
    )
 
-def update_output_2(sensor2,station2):
+def update_output_2(sensor,station):
     # beide comboboxen gevuld
-    if sensor2 != 'Select type' and station2 != 'Select station':
+    if sensor != 'Select type' and station != 'Select station':
         # connectie met databank opzetten
         dba.connect()
         # select query voor de grafiek
@@ -114,11 +114,11 @@ def update_output_2(sensor2,station2):
             and station_info.id=air_pol_measurement.station_id 
             group by measure_time'''
         # dataframe maken met sql query
-        df_values=dba.read_df_from_dbtable(select_query_values,(sensor2,station2))
-        # connectie met databank verbreken
-        dba.quitdb()
+        df_values=dba.read_df_from_dbtable(select_query_values,(sensor,station))
         # dataframe bewaren voor correlatie grafiek
         sdfs.set_df(1, df_values)
+        # connectie met databank verbreken
+        dba.quitdb()
         # figuur maken
         fig2=px.line(df_values,x='measure_time',y='avg(average_val)')
         fig2.data[0].line.color='#0000ff'
@@ -133,9 +133,7 @@ def update_output_2(sensor2,station2):
     )
 
 def update_corr(n_clicks):
-    fig=None
-    corr_fact=0
-    # zitten beide dataframes in het object sdfs
+    # is er geklikt op de button en zitten beide dataframes in het object sdfs
     if n_clicks>0 and sdfs.get_notnone_dfs()==2:
         # ophalen dataframes uit object
         df1=sdfs.get_df(0)
@@ -149,8 +147,10 @@ def update_corr(n_clicks):
         fig=px.scatter(df,x='left avg',y='right avg')
         # correlatie factor
         corr_fact=0
-    return fig,corr_fact
- 
+        return fig,corr_fact
+    else:
+        return None,0
+
 if __name__ == '__main__':
     app.run_server(debug=True)
 
