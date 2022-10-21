@@ -83,27 +83,6 @@ def update_output_1(sensor1,station1):
     else:
         return None
 
-    fig1=None
-    types=df_measure_type.name.to_list()
-    stations=df_station_info.name.to_list()
-    # comboboxen links gevuld
-    if (value1 in types) and (value2 in stations):
-        # connectie met databank opzetten
-        dba.connect()
-        # select query voor de grafiek
-        select_query_values='''select measure_time,avg(average_val) 
-            from air_pol_measurement,measure_type,station_info
-            where measure_type.name='%s' and station_info.name='%s' 
-            and measure_type.id=air_pol_measurement.measure_type_id 
-            and station_info.id=air_pol_measurement.station_id 
-            group by measure_time'''
-        # dataframe maken met sql query
-        df_values=dba.read_df_from_dbtable(select_query_values%(value1,value2),())
-        # connectie met databank verbreken
-        dba.quitdb()
-        # figuur maken
-        fig1=px.line(df_values,x='measure_time',y='avg(average_val)')
-    return fig1
 @app.callback(
     Output('dd-output-container-graph-2', 'figure'),
     Input('type-dropdown-2', 'value'),

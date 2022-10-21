@@ -134,7 +134,7 @@ def update_output_2(sensor,station):
 
 def update_corr(n_clicks):
     # is er geklikt op de button en zitten beide dataframes in het object sdfs
-    if n_clicks>0 and sdfs.get_notnone_dfs()==2:
+    if sdfs.get_notnone_dfs()==2:
         # ophalen dataframes uit object
         df1=sdfs.get_df(0)
         df2=sdfs.get_df(1)
