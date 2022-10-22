@@ -25,7 +25,7 @@ print(' ')
 # dataframe products
 print('df_products')
 df_products=pd.DataFrame(data_products,columns=['product-id','name','price'])
-print(df_kopers)
+print(df_products)
 print(' ')
 
 # left join
@@ -35,20 +35,20 @@ print(df_left)
 print(' ')
 
 # right join
-df_left=pd.merge(df_kopers,df_products,on='product-id',how='right')
+df_right=pd.merge(df_kopers,df_products,on='product-id',how='right')
 print('right join on product-id')
-print(df_left)
+print(df_right)
 print(' ')
 
 # inner join
-df_left=pd.merge(df_kopers,df_products,on='product-id',how='inner')
+df_inner=pd.merge(df_kopers,df_products,on='product-id',how='inner')
 print('inner join on product-id')
-print(df_left)
+print(df_inner)
 print(' ')
 
 # outer join
-df_left=pd.merge(df_kopers,df_products,on='product-id',how='outer')
+df_outer=pd.merge(df_kopers,df_products,on='product-id',how='outer')
 print('outer join on product-id')
-print(df_left)
+print(df_outer)
 print(' ')
 
