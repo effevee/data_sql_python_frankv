@@ -27,9 +27,9 @@ print('got cursor:',cr)
 
 # dataframes per 10000 records
 df_chunks=pd.read_csv('/home/frank/Documents/data_sql_python_frankv/Measurement_info.csv',\
-               dtype={'Station code':'int8', 'Item code':'int8', 'Instrument status':'int8', \
-                      'Average value':'float16','Measurement date':'string'},\
-               chunksize=10000)
+              dtype={'Station code':'int8', 'Item code':'int8', 'Instrument status':'int8', \
+                      'Average value':'float16','Measurement date':'string'},
+              chunksize=10000)
 
 tel=0
 for chunk in df_chunks:
