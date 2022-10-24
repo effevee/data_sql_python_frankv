@@ -58,16 +58,17 @@ app.layout = html.Div([
         html.Div([dcc.Graph(id='dd-output-container-graph-2')])
         ],style={'width':'50%','display':'inline-block'}),
     html.Div([
-        html.Button('Correlatie', id='corr-btn', n_clicks=0),
+        html.Button('Correlatie', id='corr-btn', n_clicks=0, 
+                    style={'width':'80%','height':'60px','font-size':'22px'}),
         dcc.Graph(id='corr-graph'),
-        html.Div(id='container-data')
+        html.Div(id='corr-data')
         ])
     ],style={'text-align':'center'})
     
 @app.callback(
     Output('dd-output-container-graph-1', 'figure'),
     Input('type-dropdown-1', 'value'),
-    Input('station-dropdown-1', 'value'),
+    Input('station-dropdown-1', 'value')
    )
 
 def update_output_1(sensor,station):
@@ -92,13 +93,12 @@ def update_output_1(sensor,station):
         fig1=px.line(df_values,x='measure_time',y='avg(average_val)')
         fig1.data[0].line.color='#ff0000'
         return fig1
-    else:
-        return None
+    return None
 
 @app.callback(
     Output('dd-output-container-graph-2', 'figure'),
     Input('type-dropdown-2', 'value'),
-    Input('station-dropdown-2', 'value'),
+    Input('station-dropdown-2', 'value')
    )
 
 def update_output_2(sensor,station):
@@ -123,33 +123,37 @@ def update_output_2(sensor,station):
         fig2=px.line(df_values,x='measure_time',y='avg(average_val)')
         fig2.data[0].line.color='#0000ff'
         return fig2
-    else:
-        return None
+    return None
 
 @app.callback(
     Output('corr-graph', 'figure'),
-    Output('container-data', 'children'),
-    Input('corr-btn', 'n_clicks'),
+    Output('corr-data', 'children'),
+    Output('corr-btn', 'n_clicks'),
+    Input('corr-btn', 'n_clicks')
     )
 
-def update_corr(n_clicks):
-    # is er geklikt op de button en zitten beide dataframes in het object sdfs
-    if sdfs.get_notnone_dfs()==2:
+def update_corr(num_clicks):
+    # zitten beide dataframes in het object sdfs en is er op de knop gedrukt
+    if sdfs.get_notnone_dfs()==2 and num_clicks==1:
         # ophalen dataframes uit object
-        df1=sdfs.get_df(0)
-        df2=sdfs.get_df(1)
-        # kolommen hernoemen
-        df1.rename(columns={'avg(average_val)':'left avg'}, inplace=True)
-        df2.rename(columns={'avg(average_val)':'right avg'}, inplace=True)
-        # dataframes mergen voor de correlatie
+        df1=sdfs.get_df(0)  # linker dataframe
+        df2=sdfs.get_df(1)  # rechter dataframe
+        # kolommen in dataframes hernoemen
+        df1.rename(columns={'avg(average_val)':'left_avg'}, inplace=True)
+        df2.rename(columns={'avg(average_val)':'right_avg'}, inplace=True)
+        # dataframes mergen voor de correlatie 
+        # left join met als referentie measure_time kolom van het linker dataframe (df1)
         df=pd.merge(df1,df2,how='left')
-        # figuur maken
-        fig=px.scatter(df,x='left avg',y='right avg')
-        # correlatie factor
-        corr_fact=0
-        return fig,corr_fact
-    else:
-        return None,0
+        # scatter plot is uitzetten van punten
+        scatter=px.scatter(df,x='left_avg',y='right_avg')
+        # correlatie factor is een getal tussen -1 en +1, hoe dichter bij de
+        # uitersten hoe beter het verband, rond 0 geen verband
+        cr=df['left_avg'].corr(df['right_avg'])
+        # 1ste elem : figuur, 2de elem : correlatie berekening, 3de elem : clicks op 0
+        return scatter,'correlatie:'+str(cr),0
+    
+    # dataframes niet volledig of knop niet ingedrukt
+    return None
 
 if __name__ == '__main__':
     app.run_server(debug=True)

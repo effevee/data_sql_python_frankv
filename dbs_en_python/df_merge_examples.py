@@ -8,47 +8,45 @@ Created on Tue Oct 18 14:08:57 2022
 
 import pandas as pd
 
+# dataframe kopers
 data_kopers={'name':['Jan','Ann','Piet','Kathleen','Filip','Marie','Anke'],
              'product-id':[3,2,3,1,5,4,8],
              'number':[2,5,1,7,7,3,2]}
-
-data_products={'product-id':[1,2,3,4,5,6,7,8],
-              'name':['LEDs','breadboard','jumper cables','resistors','ULN2003','potentiometer','LDR','oled'],
-              'price':[2,4,2.5,1,0.5,0.5,0.25,6]}
-
-# dataframe kopers
-df_kopers=pd.DataFrame(data_kopers,columns=['name','product-id','number'])
+df_kopers=pd.DataFrame(data_kopers)
 print('df_kopers')
 print(df_kopers)
 print(' ')
 
 # dataframe products
+data_products={'product-id':[1,2,3,4,5,6,7,8],
+              'name':['LEDs','breadboard','jumper cables','resistors','ULN2003','potentiometer','LDR','oled'],
+              'price':[2,4,2.5,1,0.5,0.5,0.25,6]}
 print('df_products')
-df_products=pd.DataFrame(data_products,columns=['product-id','name','price'])
+df_products=pd.DataFrame(data_products)
 print(df_products)
 print(' ')
 
-# left join
+# left merge
 df_left=pd.merge(df_kopers,df_products,on='product-id',how='left')
-print('left join on product-id')
+print('left merge on product-id')
 print(df_left)
 print(' ')
 
-# right join
+# right merge
 df_right=pd.merge(df_kopers,df_products,on='product-id',how='right')
-print('right join on product-id')
+print('right merge on product-id')
 print(df_right)
 print(' ')
 
-# inner join
+# inner merge
 df_inner=pd.merge(df_kopers,df_products,on='product-id',how='inner')
-print('inner join on product-id')
+print('inner merge on product-id')
 print(df_inner)
 print(' ')
 
-# outer join
+# outer merge
 df_outer=pd.merge(df_kopers,df_products,on='product-id',how='outer')
-print('outer join on product-id')
+print('outer merge on product-id')
 print(df_outer)
 print(' ')
 
