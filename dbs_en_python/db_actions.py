@@ -11,7 +11,7 @@ import pandas as pd
 
 class actions:
     # constructor van de klasse actions
-    def __init__(self,db='proto1',host='127.0.0.1',usr='dev1',pwd='hetcvo_2022.be'):
+    def __init__(self,db='proto1',host='127.0.0.1',usr='',pwd=''):
         # properties van de klasse actions
         # _ voor de naam = private memeber (afspraak)
         self._user=usr
@@ -19,6 +19,14 @@ class actions:
         self._host=host
         self._db=db
         self._cn=None  # eigenschap die het connectie object bijhoudt. Initieel op None
+        
+    # method om gebruiker te wijzigen
+    def set_user(self,name):
+        self._user=name
+        
+    # method om paswoord te wijzigen
+    def set_password(self,password):
+        self._password=password
         
     # method om connectie met database op te zetten
     def connect(self):

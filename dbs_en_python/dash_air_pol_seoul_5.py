@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 26 14:09:15 2022
+Created on Mon Nov  7 20:32:45 2022
 
 @author: frank
 """
@@ -30,19 +30,7 @@ def replace_outliers(df,col):
             
 
 #constructor klasse oproepen met aangepaste waarden voor connectie
-dba=actions(usr='usr1',pwd='hetcvo.be')
-
-# connecteren met de databank
-dba.connect()
-
-# data frame voor dropdown measure type
-df_measure_type=dba.read_df_from_dbtable('select * from measure_type',())
-
-# data frame voor dropdown station
-df_station_info=dba.read_df_from_dbtable('select * from station_info',())
-
-# database afsluiten
-dba.quitdb()
+dba=actions()
 
 # instance aanmaken voor het bijhouden van 2 dataframes
 sdfs=store_df(2)
@@ -56,26 +44,26 @@ sdfs=store_df(2)
 app = Dash(__name__)
 
 app.layout = html.Div([
+    html.Div([dcc.Input(id='in-name',type='text',placeholder='naam'),
+              dcc.Input(id='in-pwd',type='password',placeholder='paswoord'),
+              html.Button("aanmelden",id='btn-login')],
+             style={'padding':'20px','text-align':'right'}),
     html.Div([
         html.Div([
-            dcc.Dropdown(list(df_measure_type.name),placeholder='Select type',
-                         id='type-dropdown-1'),
-            dcc.Dropdown(list(df_station_info.name),placeholder='Select station',
-                         id='station-dropdown-1'),
+            dcc.Dropdown([],placeholder='Select type',id='type-dropdown-1'),
+            dcc.Dropdown([],placeholder='Select station',id='station-dropdown-1'),
             ]),
         html.Div([dcc.Graph(id='dd-output-container-graph-1')])
         ],style={'width':'50%','display':'inline-block'}),
     html.Div([
         html.Div([
-            dcc.Dropdown(list(df_measure_type.name),placeholder='Select type',
-                         id='type-dropdown-2'),
-            dcc.Dropdown(list(df_station_info.name),placeholder='Select station',
-                         id='station-dropdown-2'),
+            dcc.Dropdown([],placeholder='Select type',id='type-dropdown-2'),
+            dcc.Dropdown([],placeholder='Select station',id='station-dropdown-2'),
             ]),
         html.Div([dcc.Graph(id='dd-output-container-graph-2')])
         ],style={'width':'50%','display':'inline-block'}),
     html.Div([
-        html.Button('Correlatie', id='corr-btn', n_clicks=0, 
+        html.Button('Correlatie', id='corr-btn', n_clicks=0,disabled=True, 
                     style={'width':'80%','height':'60px','font-size':'22px'}),
         dcc.Graph(id='corr-graph'),
         html.Div(id='corr-data')
@@ -176,6 +164,45 @@ def update_corr(num_clicks):
     # dataframes niet volledig of knop niet ingedrukt
     return None
 
+@app.callback(
+    Output('type-dropdown-1','options'),
+    Output('station-dropdown-1','options'),
+    Output('type-dropdown-2','options'),
+    Output('station-dropdown-2','options'),
+    Output('corr-btn','disabled'),
+    Output('btn-login','n_clicks'),
+    Input('btn-login','n_clicks'),
+    Input('in-name','value'),
+    Input('in-pwd','value')
+    )
+
+def login_action(clicks,name,pwd):
+    if clicks > 0:
+        try:
+            # gebruikersnaam doorgeven
+            dba.set_user(name)
+            # paswoord doorgeven
+            dba.set_password(pwd)
+            # connecteren met de databank
+            dba.connect()
+            # data frame voor dropdown measure type
+            df_measure_type=dba.read_df_from_dbtable('select * from measure_type',())
+            # data frame voor dropdown station
+            df_station_info=dba.read_df_from_dbtable('select * from station_info',())
+            # database afsluiten
+            dba.quitdb()
+            types=list(df_measure_type['name'])
+            stations=list(df_station_info['name'])
+            return types,stations,types,stations,False,0
+        except Exception as e:
+            return [],[],[],[],True,0
+    return [],[],[],[],True,0
+            
+            
+        
+    
+    
+    
 if __name__ == '__main__':
     app.run_server(debug=True)
 
