@@ -46,7 +46,7 @@ app = Dash(__name__)
 app.layout = html.Div([
     html.Div([dcc.Input(id='in-name',type='text',placeholder='naam'),
               dcc.Input(id='in-pwd',type='password',placeholder='paswoord'),
-              html.Button("aanmelden",id='btn-login')],
+              html.Button("aanmelden",id='btn-login',n_clicks=0)],
              style={'padding':'20px','text-align':'right'}),
     html.Div([
         html.Div([
