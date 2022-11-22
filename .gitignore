@@ -1,3 +1,4 @@
 archive/
 Measurement_*.csv
 __pycache__
+.*
