@@ -24,4 +24,13 @@ inner join customer on sa_customerid=cu_id
 inner join status on sa_statusid=st_id
 inner join product on pro_productid=pr_id
 left join category on pr_categoryid=ca_id
-order by sa_id,pro_id
+order by sa_id,pro_id;
+
+select cu_lastname,sum(pro_price) from customer,sales_order,product_order
+where cu_id = sales_order.sa_customerid and sales_order.sa_id = product_order.pro_sales_orderid
+group by cu_lastname;
+
+select sum(pro_quantity*po_unitprice*po_salesfactor) - sum(pro_quantity*po_unitprice) from purchase_order,product_order
+where pro_productid = po_productid;
+
+select pr_name,po_stock from product,purchase_order where po_productid = pr_id;

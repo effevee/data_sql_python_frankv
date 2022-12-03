@@ -1,5 +1,7 @@
 insert into category(ca_name) values('Food'),('Drinks'),('Sauces');
 
+insert into status(st_name) values('PAID'), ('NOT PAID'), ('READY'), ('DELIVERED');
+
 insert into supplier(su_firstname,su_lastname,su_email,su_address) values
 ('Frans','Wurst','frans.wurst@dbb.de','Die Bessere Burger, Koelnstrasse 444, Hamburg, Duitsland'),
 ('Altijd','Dorst','drankcentrale@altijddorst.be','Drankencentrale Altijd Dorst, Oudenaardsesteenweg 88, Berchem, Belgie'),
@@ -41,9 +43,5 @@ po_productid,po_expiredate,po_stock) values
 insert into sales_order(sa_customerid,sa_statusid) values (1,1), (2,1);
 
 insert into product_order(pro_sales_orderid,pro_productid,pro_quantity,pro_price) values
-(1,2,1,17.90),
-(1,3,1,2.42),
-(1,11,1,0.67),
-(2,1,1,8.96),
-(2,8,1,2.90),
-(2,9,2,0.67);
+(2,11,2,(select 2*po_unitprice*po_salesfactor*po_taxfactor from purchase_order where po_productid=11));
+update purchase_order set po_stock = po_stock - 2 where po_productid = 11;
