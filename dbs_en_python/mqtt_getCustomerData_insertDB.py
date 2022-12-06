@@ -23,7 +23,25 @@ Created on Mon Nov  7 17:01:58 2022
 import time
 import paho.mqtt.client as paho
 from paho import mqtt
+import threading
+import json
+from db_actions_monday_burger import actions_db_monday_burger
 
+dba = None  # variable database
+
+def store_order(msg,dba):
+    dba.connect()
+    # fetch data from mqtt structure
+    fname = msg['who']['firstname']
+    lname = msg['who']['lastname']
+    email = msg['who']['email']
+    address = msg['who']['street']+' '+msg['who']['town']
+    date_parts = msg['who']['birth'].split('-') # EUR date format
+    birth = date_parts[2]+'-'+date_parts[1]+'-'+date_parts[0]
+    # insert customer
+    customer_id = dba.insert_customer(fname,lname,birth,email,address)
+    dba.quitdb()
+    
 # setting callbacks for different events to see if it works, print the message etc.
 def on_connect(client, userdata, flags, rc, properties=None):
     print("CONNACK received with code %s." % rc)
@@ -39,7 +57,18 @@ def on_subscribe(client, userdata, mid, granted_qos, properties=None):
 # print message, useful for checking if it was successful
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    # convert message to json object
+    msg = json.loads(str(msg.payload.decode()))
+    # create thread (subprocess)
+    th = threading.Thread(target=store_order,args=(msg,dba,))
+    # start thread
+    th.start()
 
+# create database object
+dba = actions_db_monday_burger(db='dbonly_monday_burger',
+                               host='127.0.0.1',
+                               usr='dev2',
+                               pwd='hetcvo_2022.be')
 # using MQTT version 5 here, for 3.1.1: MQTTv311, 3.1: MQTTv31
 # userdata is user defined data of any type, updated by user_data_set()
 # client_id is the given name of the client
