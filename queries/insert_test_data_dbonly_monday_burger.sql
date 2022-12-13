@@ -43,5 +43,9 @@ po_productid,po_expiredate,po_stock) values
 insert into sales_order(sa_customerid,sa_statusid) values (1,1), (2,1);
 
 insert into product_order(pro_sales_orderid,pro_productid,pro_quantity,pro_price) values
-(2,11,2,(select 2*po_unitprice*po_salesfactor*po_taxfactor from purchase_order where po_productid=11));
-update purchase_order set po_stock = po_stock - 2 where po_productid = 11;
+(2,
+(select pr_id from product where ucase(pr_name) = ucase('cola'))
+,2,(select 2*po_unitprice*po_salesfactor*po_taxfactor from purchase_order 
+where po_productid = (select pr_id from product where ucase(pr_name) = ucase('cola'))));
+update purchase_order set po_stock = po_stock - 2 
+where po_productid = (select pr_id from product where ucase(pr_name) = ucase('cola'));

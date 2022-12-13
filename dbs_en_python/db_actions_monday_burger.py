@@ -42,7 +42,7 @@ class actions_db_monday_burger(actions):
         values(%s,%s,%s,%s,%s)'''
         cr.execute(insert_customer_query,(fname,lname,email,address,birth))
         self._cn.commit()
-        # get customer id
+        # get last customer id
         get_last_id = '''select max(cu_id) from customer'''
         cr.execute(get_last_id,())
         customer_id = -1
@@ -53,28 +53,76 @@ class actions_db_monday_burger(actions):
         return customer_id
     
 
-    def insert_order(self,customer_id,status_id):
+    def insert_sales_order(self,customer_id,status):
 
         # check if connection exists
         if self.check_connect() == False:
             return False
         
         # insert sales_order
-        insert_order_query = '''insert into sales_order 
-        (sa_customerid,sa_statusid) values(%s,%s)'''
+        insert_order_query = '''insert into sales_order (sa_customerid,sa_statusid) 
+        values(%s,(select st_id from status where st_name = %s))'''
         cr = self._cn.cursor()
-        cr.execute(insert_order_query,(customer_id,status_id))
+        cr.execute(insert_order_query,(customer_id,status))
         self._cn.commit()
-        cr.close()
         
-        # get last sales_order id
-        get_last_sales_order_id = '''select max(sa_id) from sales_order'''
+        # get last sales_order id (only PAID)
+        get_last_sales_order_id = '''select max(sa_id) from sales_order where
+        sa_statusid = 1'''
         cr.execute(get_last_sales_order_id,())
         sales_order_id = -1
         for row in cr:
             sales_order_id=row[0]
             break
-        
-
-        return True
+        cr.close()
+        return sales_order_id
     
+    
+    def insert_product_order(self,products,sales_order_id):
+        
+        # check if connection exists
+        if self.check_connect() == False:
+            return False
+        
+        # check valid order (PAID status)
+        if sales_order_id <= 0:
+            return False
+        
+        # insert product_order
+        insert_product_order_query = '''
+        insert into product_order(pro_sales_orderid,pro_productid,pro_quantity,pro_price) 
+        values(%s,
+              (select pr_id from product where ucase(pr_name) = ucase(%s)),
+              %s,
+              (select %s*po_unitprice*po_salesfactor*po_taxfactor from purchase_order 
+               where po_productid = (select pr_id from product where ucase(pr_name) = ucase(%s))))'''
+        update_stock_query = '''
+        update purchase_order set po_stock = po_stock - %s 
+        where po_productid = (select pr_id from product where ucase(pr_name) = ucase(%s))
+        '''
+        cr = self._cn.cursor()        
+        for p in products:
+            cr.execute(insert_product_order_query,
+                       (sales_order_id,p,products[p],products[p],p))
+            self._cn.commit()
+            cr.execute(update_stock_query, (products[p],p))
+            self._cn.commit()            
+        cr.close()
+
+    
+    def update_order_status(self,sales_order_id,status):
+
+        # check if connection exists
+        if self.check_connect() == False:
+            return False
+
+        # update status
+        update_status_query = '''update sales_order set sa_statusid = 3
+        where sa_id = %s'''
+        if status=='DELIVERED':
+            update_status_query = update_status_query.replace('3','4')
+        cr = self._cn.cursor()
+        cr.execute(update_status_query,(sales_order_id,))
+        self.__cn.commit()
+        cr.close()
+                                    

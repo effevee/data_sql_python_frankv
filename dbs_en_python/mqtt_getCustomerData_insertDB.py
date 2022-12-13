@@ -26,6 +26,8 @@ from paho import mqtt
 import threading
 import json
 from db_actions_monday_burger import actions_db_monday_burger
+import random
+
 
 dba = None  # variable database
 
@@ -40,6 +42,16 @@ def store_order(msg,dba):
     birth = date_parts[2]+'-'+date_parts[1]+'-'+date_parts[0]
     # insert customer
     customer_id = dba.insert_customer(fname,lname,birth,email,address)
+    # insert sales_order
+    sales_order_id = dba.insert_sales_order(customer_id,msg['status'])
+    # insert product_order
+    dba.insert_product_order(msg['products'],sales_order_id)
+    # time to prepare order
+    time.sleep(random.randint(2, 5))
+    # publish status via mqtt
+    if sales_order_id > 0:
+        dba.update_order_status(sales_order_id,'READY')
+        client.publish('hetcvo_sqldb_python_022_respons/frankvg_16',payload=str(sales_order_id))
     dba.quitdb()
     
 # setting callbacks for different events to see if it works, print the message etc.
@@ -57,12 +69,19 @@ def on_subscribe(client, userdata, mid, granted_qos, properties=None):
 # print message, useful for checking if it was successful
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
-    # convert message to json object
-    msg = json.loads(str(msg.payload.decode()))
-    # create thread (subprocess)
-    th = threading.Thread(target=store_order,args=(msg,dba,))
-    # start thread
-    th.start()
+    # order message
+    if 'hetcvo_sqldb_python_022/' in msg.topic:
+        # convert message to json object
+        msg = json.loads(str(msg.payload.decode()))
+        # create thread (subprocess)
+        th = threading.Thread(target=store_order,args=(msg,dba,))
+        # start thread
+        th.start()
+    # status message
+    if msg.topic == 'hetcvo_sqldb_python_22_delivered/frankvg_16':
+        dba.connect()
+        sales_order_id = str(msg.payload.decode())
+        dba.update_order_status(sales_order_id, 'DELIVERED')
 
 # create database object
 dba = actions_db_monday_burger(db='dbonly_monday_burger',
