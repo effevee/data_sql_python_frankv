@@ -117,12 +117,13 @@ class actions_db_monday_burger(actions):
             return False
 
         # update status
-        update_status_query = '''update sales_order set sa_statusid = 3
-        where sa_id = %s'''
-        if status=='DELIVERED':
+        update_status_query = '''update sales_order set sa_statusid = 3 where sa_id = %s'''
+        if status == 'DELIVERED':
             update_status_query = update_status_query.replace('3','4')
+        #print('DEBUG '+update_status_query)
+        #print('DEBUG '+str(sales_order_id))
         cr = self._cn.cursor()
         cr.execute(update_status_query,(sales_order_id,))
-        self.__cn.commit()
+        self._cn.commit()
         cr.close()
                                     

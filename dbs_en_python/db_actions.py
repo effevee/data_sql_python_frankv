@@ -40,6 +40,7 @@ class actions:
     def quitdb(self):
         if self._cn is not None:
             self._cn.disconnect()
+            self._cn = None
             
     # method om (een stuk van) een dataframe in database tabel in te voegen
     def write_small_df_to_dbtable(self,query,data):

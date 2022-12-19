@@ -29,9 +29,10 @@ from db_actions_monday_burger import actions_db_monday_burger
 import random
 
 
-dba = None  # variable database
+dba = None      # variable database
+client = None   # variable client
 
-def store_order(msg,dba):
+def store_order(msg,dba,client):
     dba.connect()
     # fetch data from mqtt structure
     fname = msg['who']['firstname']
@@ -74,14 +75,15 @@ def on_message(client, userdata, msg):
         # convert message to json object
         msg = json.loads(str(msg.payload.decode()))
         # create thread (subprocess)
-        th = threading.Thread(target=store_order,args=(msg,dba,))
+        th = threading.Thread(target=store_order,args=(msg,dba,client,))
         # start thread
         th.start()
     # status message
-    if msg.topic == 'hetcvo_sqldb_python_22_delivered/frankvg_16':
+    elif msg.topic == 'hetcvo_sqldb_python_22_delivered/frankvg_16':
         dba.connect()
         sales_order_id = str(msg.payload.decode())
         dba.update_order_status(sales_order_id, 'DELIVERED')
+        dba.quitdb()
 
 # create database object
 dba = actions_db_monday_burger(db='dbonly_monday_burger',
