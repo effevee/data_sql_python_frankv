@@ -79,9 +79,9 @@ def on_message(client, userdata, msg):
         # start thread
         th.start()
     # status message
-    elif msg.topic == 'hetcvo_sqldb_python_22_delivered/frankvg_16':
+    elif msg.topic == 'hetcvo_sqldb_python_022_delivered/frankvg_16':
         dba.connect()
-        sales_order_id = str(msg.payload.decode())
+        sales_order_id = int(str(msg.payload.decode()))
         dba.update_order_status(sales_order_id, 'DELIVERED')
         dba.quitdb()
 
@@ -110,7 +110,7 @@ client.on_publish = on_publish
 
 # subscribe to all topics of encyclopedia by using the wildcard "#"
 client.subscribe("hetcvo_sqldb_python_022/#", qos=1)
-
+client.subscribe('hetcvo_sqldb_python_022_delivered/frankvg_16', qos=1)
 # a single publish, this can also be done in loops, etc.
 #client.publish("encyclopedia/temperature", payload="hot", qos=1)
 
