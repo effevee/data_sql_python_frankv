@@ -7,6 +7,7 @@ Created on Mon Nov 28 20:47:39 2022
 """
 
 from db_actions import actions
+import time
 
 class actions_db_monday_burger(actions):
     
@@ -120,10 +121,32 @@ class actions_db_monday_burger(actions):
         update_status_query = '''update sales_order set sa_statusid = 3 where sa_id = %s'''
         if status == 'DELIVERED':
             update_status_query = update_status_query.replace('3','4')
-        #print('DEBUG '+update_status_query)
-        #print('DEBUG '+str(sales_order_id))
         cr = self._cn.cursor()
         cr.execute(update_status_query,(sales_order_id,))
         self._cn.commit()
         cr.close()
+        
+    
+    def get_product_stock(self,category_id):
+       
+        # check if connection exists
+        data = []
+        if self.check_connect() == False:
+            return [data]
+        
+        # get product stock
+        get_stock_query = '''select pr_name,po_stock from purchase_order,product 
+                             where pr_id = po_productid and pr_categoryid = %s'''
+        
+        # time stocktake
+        t=time.localtime()
+        now = str(t.tm_hour) + ":" + str(t.tm_min)
+        cr = self._cn.cursor()
+        cr.execute(get_stock_query,(category_id,))
+        for row in cr:
+            data.append(list(row))
+            data[-1].insert(0,now) # add time of stocktake
+        cr.close()
+        return data
+       
                                     

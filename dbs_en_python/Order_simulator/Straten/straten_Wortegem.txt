@@ -1,0 +1,34 @@
+
+    Anzegemseweg     9790
+    Bijengoed     9790
+    Boeregemstraat     9790
+    Cauborrestraat     9790
+    Cijnskouter     9790
+    Dennenstraat     9790
+    Diepestraat     9790
+    Egaalstraat     9790
+    Gaverstraat     9790
+    Gotstraat     9790
+    Hector Plancquaertstraat     9790
+    Kapellestraat     9790
+    Kasteelstraat     9790
+    Keerstraat     9790
+    Kleistraat     9790
+    Kruishoutemseweg     9790
+    Nieuwstraat     9790
+    Noordbos     9790
+    Peerdekouterstraat     9790
+    Pontstraat     9790
+    Processiestraat     9790
+    Rijborgstraat     9790
+    Spreeuwengoed     9790
+    Steenakkerstraat     9790
+    Stoofstraat     9790
+    Stuivenbergstraat     9790
+    Tjammelsstraat     9790
+    Vijverhoek     9790
+    Vrankaartstraat     9790
+    Vrouweneikstraat     9790
+    Waregemseweg     9790
+    Wortegemplein     9790
+    Zonnestraat     9790

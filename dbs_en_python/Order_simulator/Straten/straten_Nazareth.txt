@@ -1,0 +1,76 @@
+
+    Albert Claeysstraat     9810
+    Beekweg     9810
+    Begoniastraat     9810
+    Biesten     9810
+    Binnenweg     9810
+    Brouwerijstraat     9810
+    Brouwershoflaan     9810
+    Cyriel Buyssestraat     9810
+    Dammekenswegel     9810
+    De Biesten     9810
+    De Lichterveldestraat     9810
+    Diktestraat     9810
+    Dries     9810
+    Duivelstraat     9810
+    Eedstraat     9810
+    Eikenstraat     9810
+    Ganzenbroek     9810
+    Gaston Martensstraat     9810
+    Grenadierslaan     9810
+    Guido Gezellestraat     9810
+    Guillaume Delmeirelaan     9810
+    Hauwenhauwstraat     9810
+    Heerweg     9810
+    Ijselaars     9810
+    Isidoor Van Kerrebroeckstraat     9810
+    Jagerstraat     9810
+    Johan Daisnestraat     9810
+    Karel van de Woestijnestraat     9810
+    Karperstraat     9810
+    Kerkplein     9810
+    Kleine Brouwerijstraat     9810
+    Koedreef     9810
+    Korte Zandstraat     9810
+    Kortebosstraat     9810
+    Kouter     9810
+    Kouterhoek     9810
+    Kwaadstraat     9810
+    Landuitstraat     9810
+    Leytjesstraat     9810
+    Meersstraat     9810
+    Nederbosstraat     9810
+    Nieuwe Bosstraat     9810
+    Nieuwe Steenweg     9810
+    Noël Schoorensstraat     9810
+    Noorderbiesten     9810
+    Oostkouter     9810
+    Oude Eedstraat     9810
+    Paanhuisstraat     9810
+    Parkwijk     9810
+    Plaanstraat     9810
+    Pontweg     9810
+    Raoul de Hemptinnelaan     9810
+    Rozenstraat     9810
+    's Gravendreef     9810
+    Scheldeoever     9810
+    Scheldestraat     9810
+    Sint-Amandstraat     9810
+    Sint-Annastraat     9810
+    Sint-Pieterslaan     9810
+    Sluis     9810
+    Spoorwegstraat     9810
+    Steenweg     9810
+    Stijn Streuvelsstraat     9810
+    Ten Edestraat     9810
+    Tulpenstraat     9810
+    Veldstraat     9810
+    Vestenwegel     9810
+    Vijverstraat     9810
+    Waterrattestraat     9810
+    Weefstraat     9810
+    Zagmanstraat     9810
+    Zandstraat     9810
+    Zonnestraat     9810
+    Zuiderbiesten     9810
+

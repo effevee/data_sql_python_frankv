@@ -1,0 +1,99 @@
+
+    Anglo     9870
+    Azalealaan     9870
+    Beekstraat     9870
+    Begonialaan     9870
+    Berkenlaan     9870
+    Beukenlaan     9870
+    Biezenstraat     9870
+    Bilkhage     9870
+    Binnenweg     9870
+    Blauwdreef     9870
+    Boelakendreef     9870
+    Bremstraat     9870
+    Dennenstraat     9870
+    Donkerweg     9870
+    Doornstraat     9870
+    Drogenboomstraat     9870
+    Eikenlaan     9870
+    Ellegemstraat     9870
+    Elzenlaan     9870
+    Fazantstraat     9870
+    Gaston Martensplein     9870
+    Gaverbeekstraat     9870
+    Georges Dheedenestraat     9870
+    Gerststraat     9870
+    Haverstraat     9870
+    Heidestraat     9870
+    Hoenderdreef     9870
+    Hof ter Weeden     9870
+    Hooistraat     9870
+    Jagersstraat     9870
+    Kapellestraat     9870
+    Kastanjelaan     9870
+    Kerselarenlaan     9870
+    Kievitstraat     9870
+    Kleine Moerweg     9870
+    Knokstraat     9870
+    Koekoekstraat     9870
+    Kouterweg     9870
+    Kraaidreef     9870
+    Leenstraat     9870
+    Leeuwerikstraat     9870
+    Leiestraat     9870
+    Lijsterstraat     9870
+    Limnanderdreef     9870
+    Lindenbergstraat     9870
+    Lindenlaan     9870
+    Looierijstraat     9870
+    Maisstraat     9870
+    Meersstraat     9870
+    Meiweg     9870
+    Merelstraat     9870
+    Modest Huys-laan     9870
+    Modest Huysplein     9870
+    Moerbeekpark     9870
+    Moerbeekstraat     9870
+    Nachtegaalstraat     9870
+    Nijverheidsstraat     9870
+    Oeselgemstraat     9870
+    Olmenlaan     9870
+    Olsenestraat     9870
+    Ommegangstraat     9870
+    Oude Waalstraat     9870
+    Oude Weg     9870
+    Papegaaistraat     9870
+    Paradijsstraat     9870
+    Ponthove     9870
+    Pontstraat     9870
+    Rietstraat     9870
+    Roggestraat     9870
+    Roodborststraat     9870
+    Rootmoerelaan     9870
+    Roterijstraat     9870
+    Rozenlaan     9870
+    Spoorwegstraat     9870
+    Staatsbaan     9870
+    Statiestraat     9870
+    Tarwestraat     9870
+    Texelhoek     9870
+    Valleistraat     9870
+    Vennestraat     9870
+    Vijvestraat     9870
+    Vinkstraat     9870
+    Visserijstraat     9870
+    Vlaanderenstraat     9870
+    Vlasstraat     9870
+    Waalbeekpark     9870
+    Waalbeekstraat     9870
+    Waalstraat     9870
+    Warandestraat     9870
+    Waregemstraat     9870
+    Wiedauwstraat     9870
+    Wielkensstraat     9870
+    Wilgenlaan     9870
+    Zandbergstraat     9870
+    Zaubeekstraat     9870
+    Zonnelaan     9870
+    Zuidstraat     9870
+    Zwaluwstraat     9870

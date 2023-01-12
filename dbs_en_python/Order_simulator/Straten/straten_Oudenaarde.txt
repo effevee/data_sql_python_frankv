@@ -1,0 +1,110 @@
+
+    Achter de Wacht     9700
+    Achterburg     9700
+    Adriaan Brouwerstraat     9700
+    Apostolinnenplein     9700
+    Baarstraat     9700
+    Baarzak A     9700
+    Baarzak B     9700
+    Bekstraat     9700
+    Bergstraat     9700
+    Bevrijdingsstraat     9700
+    Binneneindries     9700
+    Blekerijstraat     9700
+    Bloemenhof     9700
+    Broodstraat     9700
+    Bulkendreef     9700
+    Burg     9700
+    Burgschelde     9700
+    Desiré Waelkensstraat     9700
+    Devosstraat     9700
+    Dijkstraat     9700
+    Doornikstraat     9700
+    Droesbekeplein     9700
+    Droogbroek     9700
+    Eindrieskaai     9700
+    Einestraat     9700
+    Fortstraat     9700
+    Galgestraat     9700
+    Gaspar Heuvickstraat     9700
+    Gelukstede     9700
+    Generaal Pershingstraat     9700
+    Gentiel Antheunisplein     9700
+    Gevaertsdreef     9700
+    Gieterijstraat     9700
+    Gobelinstraat     9700
+    Grachtschelde     9700
+    Groenstraat     9700
+    Hendrik Consciencestraat     9700
+    Hofstraat     9700
+    Hoogstraat     9700
+    Ijzerstraat     9700
+    Jacob Lacopsstraat     9700
+    Jan Jozef Raepsaetplein     9700
+    Jan Van Pameleplein     9700
+    Jan zonder Vreeslaan     9700
+    Jezuietenplein     9700
+    Jules Lacroixstraat     9700
+    Kapucijnengang     9700
+    Kasteelstraat     9700
+    Kattestraat     9700
+    Keizer Karelstraat     9700
+    Koekop     9700
+    Koningin Elisabethlaan     9700
+    Koningsstraat     9700
+    Krekelput     9700
+    Kruisstraat     9700
+    Lappersfort     9700
+    Levietenstraatje     9700
+    Libellenstraat     9700
+    Lotharingenstraat     9700
+    Louise Mariekaai     9700
+    Maagdendale     9700
+    Margaretha Van Parmastraat     9700
+    Markt     9700
+    Marlboroughlaan     9700
+    Matthijs Casteleinstraat     9700
+    Meerspoortsteeg     9700
+    Meinaert     9700
+    Minderbroedersplein     9700
+    Nederstraat     9700
+    Neerwelden     9700
+    Pamelekerkplein     9700
+    Parkstraat     9700
+    Pauwel Vander Scheldenstraat     9700
+    Perregang     9700
+    Pompstraat     9700
+    Prins Leopoldstraat     9700
+    Ranonkelstraat     9700
+    Refugestraat     9700
+    Remparden     9700
+    Riethof     9700
+    Rodelos     9700
+    Ronde van Vlaanderenplein     9700
+    Scheldekant     9700
+    Simon De Paepestraat     9700
+    Sint-Jozefsplein     9700
+    Sint-Lucasstraat     9700
+    Sint-Walburgastraat     9700
+    Smallendam     9700
+    Stijn Streuvelsstraat     9700
+    Tacambaroplein     9700
+    Ter Eecken     9700
+    Terkerkenlaan     9700
+    Trekweg     9700
+    Trekweg Linker oever     9700
+    Trekweg Rechter oever     9700
+    Tuinwijk     9700
+    Tussenbruggen     9700
+    Tussenmuren     9700
+    Veldstraat     9700
+    Ververijstraat     9700
+    Vlaanderenstraat     9700
+    Voor Eine     9700
+    Voorburg     9700
+    Waterleliestraat     9700
+    Wijngaardstraat     9700
+    Woeker     9700
+    Wostine     9700
+    Zakske     9700
+    Zegestraat     9700

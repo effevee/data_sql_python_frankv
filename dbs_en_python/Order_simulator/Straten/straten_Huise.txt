@@ -1,0 +1,38 @@
+
+    Appelhoekstraat     9750
+    Bekemolen     9750
+    Bekestraat     9750
+    Della Faillestraat     9750
+    Diepestraat     9750
+    Driesstraat     9750
+    Gansstraat     9750
+    Gentsesteenweg     9750
+    Groeneweg     9750
+    Hagepreekpad     9750
+    Hamstraat     9750
+    Heirentstraat     9750
+    Hofakkerstraat     9750
+    Hoogboeregemstraat     9750
+    Huiseplein     9750
+    Kallestraat     9750
+    Keitelstraat     9750
+    Kleine Dries     9750
+    Kloosterstraat     9750
+    Koestraat     9750
+    Kokerstraat     9750
+    Kolmstraat     9750
+    Kolpaart     9750
+    Korte Aststraat     9750
+    Korte Gebuurte     9750
+    Korte Molenstraat     9750
+    Lange Aststraat     9750
+    Lindestraat     9750
+    Maldegemstraat     9750
+    Molenstraat     9750
+    Oost Beertegemstraat     9750
+    Prinsenhof     9750
+    Rooigemstraat     9750
+    St.Hilariuslindestraat     9750
+    Stropersstraat     9750
+    Vijvensstraat     9750
+    Wannegemstraat     9750

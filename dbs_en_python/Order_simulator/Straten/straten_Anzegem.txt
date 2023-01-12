@@ -1,0 +1,79 @@
+
+    Arendstraat     8570
+    Balthazarstraat     8570
+    Belsbruggestraat     8570
+    Berglaan     8570
+    Berkenlaan     8570
+    Bevrijdingslaan     8570
+    Bloeistraat     8570
+    Borreberg     8570
+    Buyckstraat     8570
+    De Limburg Stirumdreef     8570
+    De Vierschaar     8570
+    Diepgrondstraat     8570
+    Dompelstraat     8570
+    Dorpsplein     8570
+    Eegalstraat     8570
+    Gijzelbrechtegemstraat     8570
+    Groenstraat     8570
+    Grote Leiestraat     8570
+    Hemsrode     8570
+    Henri Heffinckstraat     8570
+    Heuntjeshoek     8570
+    Heuntjesstraat     8570
+    Holstraat     8570
+    Kalkstraat     8570
+    Kasteelplein     8570
+    Kerkstraat     8570
+    Ketsersdreef     8570
+    Kleine Leiestraat     8570
+    Klokketuin     8570
+    Koekuitweg     8570
+    Koningskouter     8570
+    Korte Winterstraat     8570
+    Kortesteeg     8570
+    Kortestraat     8570
+    Kouterstraat     8570
+    Krommestraat     8570
+    Kruiskestraat     8570
+    Kruisweg     8570
+    Landergemstraat     8570
+    Landergemweg     8570
+    Lange Winterstraat     8570
+    Lindeplein     8570
+    Marktplein     8570
+    Neerbeekstraat     8570
+    Nieuwpoorterf     8570
+    Nieuwpoortstraat     8570
+    Ouden Heirweg     8570
+    Oudstrijdersstraat     8570
+    Petegemstraat     8570
+    Pikkelstraat     8570
+    Razenheedstraat     8570
+    Reinstraat     8570
+    Rijkestraat     8570
+    Roggeveld     8570
+    Rogierdreef     8570
+    Rosstraat     8570
+    Roterijstraat     8570
+    Schaagstraat     8570
+    Statieplein     8570
+    Statiestraat     8570
+    Steenbruggestraat     8570
+    Steenbrugmolenstraat     8570
+    Steenovenstraat     8570
+    Sterhoek     8570
+    Stientjesstraat     8570
+    Tempeliersstraat     8570
+    Ter Schabbe     8570
+    Tiegemberg     8570
+    Torrebosstraat     8570
+    Vichtsesteenweg     8570
+    Vinkenhout     8570
+    Vlamingstraat     8570
+    Walskerkestraat     8570
+    Weedries     8570
+    Winterhoek     8570
+    Wortegemsesteenweg     8570
+    Zijptestraat     8570
+    Zilverberg     8570

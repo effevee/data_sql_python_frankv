@@ -1,0 +1,270 @@
+
+    Acacialaan     8790
+    Achterstraat     8790
+    Albert Saverysstraat     8790
+    Albert Servaeslaan     8790
+    Alcide de Gasperilaan     8790
+    André Demedtsstraat     8790
+    Anzegemseweg     8790
+    Armand De Rorestraat     8790
+    Aststraat     8790
+    August Craslaan     8790
+    Azalealaan     8790
+    Baanstknokstraat     8790
+    Ballingstraat     8790
+    Beekstraat     8790
+    Begijnenwegel     8790
+    Beiaardstraat     8790
+    Bergstraat     8790
+    Berkenlaan     8790
+    Bessemstraat     8790
+    Bieststraat     8790
+    Biezenhof     8790
+    Bilkhagelaan     8790
+    Blauwe-Zwaanstraat     8790
+    Blauwpoortstraat     8790
+    Blekerijstraat     8790
+    Boekenplein     8790
+    Boeversstraat     8790
+    Bosstraat     8790
+    Boterbloemstraat     8790
+    Botestraat     8790
+    Boulezlaan     8790
+    Brabantstraat     8790
+    Bremlaan     8790
+    Broekstraat     8790
+    Brouwerijstraat     8790
+    Caseelstraat     8790
+    Casselrijstraat     8790
+    Churchilllaan     8790
+    Cichoreistraat     8790
+    Constant Permekestraat     8790
+    Damweg     8790
+    Deerlijkseweg     8790
+    Desselgemseweg     8790
+    Drafstraat     8790
+    Driebek     8790
+    Driekavenstraat     8790
+    Driekoningenstraat     8790
+    Driesstraat     8790
+    Drogenboomstraat     8790
+    Eertbruggestraat     8790
+    Eikenlaan     8790
+    Elsdreef     8790
+    Engelenstraat     8790
+    Erasmuslaan     8790
+    Esdoornstraat     8790
+    Eugène Bekaertlaan     8790
+    Europalaan     8790
+    Evarist De Coninckstraat     8790
+    Fabrieksstraat     8790
+    Fazantenlaan     8790
+    Felix De Ruyckstraat     8790
+    Felix Verhaeghestraat     8790
+    Flanders-Fieldweg     8790
+    Franklin Rooseveltlaan     8790
+    Galgestraat     8790
+    Galgewegel     8790
+    Galopstraat     8790
+    Ganzendries     8790
+    Gareelstraat     8790
+    Garenstraat     8790
+    Gaston Martensstraat     8790
+    Gaverkestraat     8790
+    Gemeenteplein     8790
+    Gentse Heerweg     8790
+    Gentseweg     8790
+    Geraniumlaan     8790
+    Ginstestraat     8790
+    Goedendagdreef     8790
+    Goelevenweg     8790
+    Grasdreef     8790
+    Groendreef     8790
+    Groene Wandeling     8790
+    Guido Gezellestraat     8790
+    Guldensporenlaan     8790
+    Gustaaf Desmetstraat     8790
+    Haantjesstraat     8790
+    Harelbekestraat     8790
+    Hazelaarlaan     8790
+    Hazepad     8790
+    Hazewindstraat     8790
+    Heidestraat     8790
+    Henri Lebbestraat     8790
+    Het Veen     8790
+    Hippodroomstraat     8790
+    Hoefijzerstraat     8790
+    Hof Ter Waaien     8790
+    Hoge Kave     8790
+    Hoge Kouter     8790
+    Holstraat     8790
+    Hongerstraat     8790
+    Hoogmolenstraat     8790
+    Hoogmolenwegel     8790
+    Hugo Verrieststraat     8790
+    Industrielaan     8790
+    Ingooigemstraat     8790
+    Jagersstraat     8790
+    Jan Borluutstraat     8790
+    Jan Bouckaertstraat     8790
+    Joannes Huyslaan     8790
+    Jozef Duthoystraat     8790
+    Jules Delombaerdeplein     8790
+    Jules Haerinckstraat     8790
+    Jutestraat     8790
+    Kabeljauwstraat     8790
+    Kalkhoevestraat     8790
+    Kamiel Vandeputtestraat     8790
+    Kapellestraat     8790
+    Karekietstraat     8790
+    Karelmeers     8790
+    Karmeldreef     8790
+    Keerstraat     8790
+    Keizerstraat     8790
+    Kempstraat     8790
+    Kerkhofstraat     8790
+    Keukeldam     8790
+    Kievitstraat     8790
+    Klaverveld     8790
+    Kleithoekstraat     8790
+    Koetsierstraat     8790
+    Kollebloemstraat     8790
+    Konijneveld     8790
+    Koningin Fabiolalaan     8790
+    Konrad Adenauerlaan     8790
+    Korenbloemstraat     8790
+    Korendreef     8790
+    Kraaienveld     8790
+    Krakeelhoek     8790
+    Kruishoutemseweg     8790
+    Kruiskesstraat     8790
+    Kuipersstraat     8790
+    Langebrugstraat     8790
+    Langveld     8790
+    Lavendellaan     8790
+    Leenstraat     8790
+    Leeuwkestraat     8790
+    Lentedreef     8790
+    Lepelboomstraat     8790
+    Lijsterlaan     8790
+    Lindestraat     8790
+    Loofstraat     8790
+    Maalbeekstraat     8790
+    Mannebeekstraat     8790
+    Marcel Couckestraat     8790
+    Marcel Windelsstraat     8790
+    Markt     8790
+    Meersblomme     8790
+    Meersstraat     8790
+    Meiweg     8790
+    Mercatorlaan     8790
+    Mirakelstraat     8790
+    Molenstraat     8790
+    Molenwegel     8790
+    Mosschaardstraat     8790
+    Mottestraat     8790
+    Mussekouter     8790
+    Nachtegaallaan     8790
+    Nieuwe Olm     8790
+    Nieuwenhovestraat     8790
+    Nieuwhuizenstraat     8790
+    Nokerseweg     8790
+    Noorderlaan     8790
+    Oblatenstraat     8790
+    Olifantstraat     8790
+    Olmstraat     8790
+    Oosterlaan     8790
+    Oscar Verschuerestraat     8790
+    Oude Desselgemstraat     8790
+    Oude Nokerseweg     8790
+    Oude Vijvestraat     8790
+    Oudstrijderslaan     8790
+    Pand     8790
+    Pannewegel     8790
+    Papegaaistraat     8790
+    Paterswegel     8790
+    Patrijzenstraat     8790
+    Peiskeshof     8790
+    Pelikaanstraat     8790
+    Pijkstraat     8790
+    Piste     8790
+    Plasstraat     8790
+    Platanendreef     8790
+    Potegemstraat     8790
+    Processiestraat     8790
+    Putmanstraat     8790
+    Remi Vanmeerhaeghestraat     8790
+    René Sabbestraat     8790
+    Renthuisstraat     8790
+    Repelstraat     8790
+    Robert Schumannlaan     8790
+    Roger De Backerstraat     8790
+    Roger Vansteenbruggestraat     8790
+    Roterijstraat     8790
+    Ruitersdreef     8790
+    Schakelstraat     8790
+    Schakelweg     8790
+    Schapersdreef     8790
+    Schietspoelstraat     8790
+    Sint-Arnoldusstraat     8790
+    Sint-Jozefsstraat     8790
+    Sint-Margrietstraat     8790
+    Slekkeput     8790
+    Smedenstraat     8790
+    Smoorken     8790
+    Spei     8790
+    Spitaalstraat     8790
+    Staf Stientjeslaan     8790
+    Stationsstraat     8790
+    Steenovenstraat     8790
+    Stijn Streuvelsstraat     8790
+    Stormestraat     8790
+    Stuifkouter     8790
+    Tapuitstraat     8790
+    Tategemstraat     8790
+    Ten Hedestraat     8790
+    Ter Elststraat     8790
+    Teugelstraat     8790
+    Textielstraat     8790
+    Tijmlaan     8790
+    Tjollensstraat     8790
+    Toekomststraat     8790
+    Torenlaan     8790
+    Truweelstraat     8790
+    Tulpenlaan     8790
+    Vandewoestijnelaan     8790
+    Veldloopstraat     8790
+    Vennestraat     8790
+    Verbindingsweg     8790
+    Verhelststraat     8790
+    Ververijstraat     8790
+    Vichtseweg     8790
+    Vijfseweg     8790
+    Vijverdamstraat     8790
+    Vinkenlaan     8790
+    Vlasbloemstraat     8790
+    Vlierstraat     8790
+    Voldersstraat     8790
+    Vredestraat     8790
+    Waalshoekstraat     8790
+    Wallegracht     8790
+    Warandestraat     8790
+    Waterstraat     8790
+    Westerlaan     8790
+    Wetstraat     8790
+    Weversstraat     8790
+    Wiedouwstraat     8790
+    Wijmeriestraat     8790
+    Wilgendreef     8790
+    Windhoek     8790
+    Wollestraat     8790
+    Wortegemseweg     8790
+    Zadelstraat     8790
+    Zagerijstraat     8790
+    Zandstraat     8790
+    Zavelberg     8790
+    Zeswegenstraat     8790
+    Zuiderlaan     8790
+    Zuiderpromenade     8790
+    Zultseweg     8790
+    Zwaluwstraat     8790

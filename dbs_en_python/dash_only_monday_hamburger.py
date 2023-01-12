@@ -5,7 +5,7 @@ Created on Sat Nov 26 21:42:59 2022
 @author: gebruiker
 """
 
-from dash import Dash, dcc, html, Input, Output, dash_table
+from dash import Dash, dcc, html, Input, Output
 from db_actions_monday_burger import actions_db_monday_burger
 import pandas as pd
 import plotly.express as px
@@ -14,10 +14,20 @@ import time
 import math
 
 
-dba = actions_db_monday_burger(db='dbonly_monday_burger', host='127.0.0.1')
+def log(err):
+    f = open('log.txt','a')
+    t = time.localtime()
+    f.write(str(t.tm_hour)+':'+str(t.tm_min)+':'+str(t.tm_sec)+'##'+err+'\n')
+    f.close()
+    
 
-# leeg dataframe met 3 kolommen
-df_food = pd.DataFrame(columns=['time','stock','product'])
+class localData:
+    
+    def __init__(self):
+        self.df_food = pd.DataFrame(columns=['time','product','stock'])
+        
+lcd = localData()
+dba = actions_db_monday_burger(db='dbonly_monday_burger', host='127.0.0.1')
 
 data_tmp={"Hamburger gezond":"OK","Cola":"OK","Ketchup":"OK"}
 
@@ -31,7 +41,7 @@ def init_table(data):
 
 app = Dash(__name__)
 
-app.layout = dcc.Tabs(id='tabs',value='login',children=[
+app.layout = html.Div([dcc.Tabs(id='tabs',value='login',children=[
     dcc.Tab(label='login',value='login',id='tab_login',children=[
             dcc.Input(id='in-name',type='text',placeholder='naam'),
             dcc.Input(id='in-pwd',type='password',placeholder='paswoord'),
@@ -47,8 +57,8 @@ app.layout = dcc.Tabs(id='tabs',value='login',children=[
         dcc.Graph(id="stock_food"),
         dcc.Graph(id="stock_drinks"),
         dcc.Graph(id="stock_sauces")]),
-    dcc.Tab(label="quick view voorraad",value="quickstock",id="quickstock",disabled=True,children=[init_table(data_tmp)]),
-    dcc.Interval(id='interval_stock',interval=60*1000,n_intervals=0)]
+    dcc.Tab(label="quick view voorraad",value="quickstock",id="quickstock",disabled=True,children=[init_table(data_tmp)])]),
+    dcc.Interval(id='interval_stock',interval=30*1000,n_intervals=0)]
     )
 
 @app.callback(
@@ -94,7 +104,7 @@ def update_tab_num_clients(tab):
         qry ='''select * from sales_order where sa_timestamp >= %s'''
         # sales orders in dataframe stoppen
         now = datetime.datetime.now()
-        today = now.strftime("%y-%m-%d 00:00:00")
+        today = now.strftime("%Y-%m-%d 00:00:00")
         df_now = dba.read_df_from_dbtable(qry, (today,))
         # datum van de tijd verwijderen
         pd.to_datetime(df_now['sa_timestamp']).dt.time
@@ -102,7 +112,7 @@ def update_tab_num_clients(tab):
         # df_now.to_csv('test_orders.csv')
         # aantal klanten per 15 min indelen
         t=time.localtime()
-        nbins=math.ceil((int(t.tm_hour)*60 + int(t.tm_min)-18*60)/15)
+        nbins=math.ceil((int(t.tm_hour)*60 + int(t.tm_min)-10*60)/15)
         fig_now = px.histogram(df_now,x='sa_timestamp',nbins=nbins)
  
         # histogram vorige periode
@@ -113,7 +123,7 @@ def update_tab_num_clients(tab):
         # datum van de tijd verwijderen
         pd.to_datetime(df_now['sa_timestamp']).dt.time
         # aantal klanten per 15 min indelen
-        nbins=math.ceil((21*60 + 30 -18*60)/15)
+        nbins=math.ceil((21*60 + 30 -10*60)/15)
         fig_prev = px.histogram(df_prev,x='sa_timestamp',nbins=nbins)
         # database sluiten
         dba.quitdb()
@@ -126,29 +136,36 @@ def update_tab_num_clients(tab):
     Input('interval_stock', 'n_intervals'))
 
 def update_stock_status(interval):
-    # query food stock
-    qry_food = '''select pr_name,po_stock from purchase_order,product 
-        where pr_id=po_productid and pr_categoryid=1'''           
+    # opvullen dataframe zonder aanmelding
+    dba.set_user('usr2')
+    dba.set_password('hetcvo.be')
     # connectie met database
-    dba.connect()
+    res = dba.connect()
+    if res == False:
+        log('Error connection db')
+        return interval
     # dataframe opvullen
-    df_stock_food = dba.read_df_from_dbtable(qry_food, ())
-    products = df_stock_food['pr_name'].to_list()  # lijst producten
-    stocks = df_stock_food['po_stock'].to_list()   # lijst stocks
-    # tijd ophalen
-    t=time.localtime()
-    now = t.tm_hour + ':' + t.tm_min
-    # dataframe grafiek opvullen
-    for i in range(len(products)):
-        # distionary om rij toe te voegen aan dataframe
-        row = {'time':now, 'stock':stocks[i], 'product':products[i]}
-        # toevoegen aan globale dataframe
-        df_food.append(row)
+    res = dba.get_product_stock(1)
+    log(str(res))
+    df = pd.DataFrame(res,columns=['time', 'product', 'stock'])
+    lcd.df_food = pd.concat([lcd.df_food,df])
     # test
-    df_food.to_csv('test_stock_food.csv')
+    lcd.df_food.to_csv('test_stock_food.csv')
     dba.quitdb()
     
     return interval
+
+
+@app.callback(
+    Output('stock_food','figure'),
+    Input('tabs','value'))
+
+def update_stock_stat(tab):
+    #if tab == "stock":
+    lcd.df_food.to_csv('control_stock.csv')
+    fig_food = px.line(lcd.df_food,x='time',y='stock',color='product')
+    return fig_food
+
 
 if __name__ == '__main__':
     app.run_server(debug=True,host="0.0.0.0")

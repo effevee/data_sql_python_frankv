@@ -1,0 +1,20 @@
+
+    Beekstraat     9790
+    Blaarhoek     9790
+    Boskant     9790
+    Broekstraat     9790
+    Eeuwhoek     9790
+    Elsegemplein     9790
+    Galgestraat     9790
+    Gijzelbrechtegemstraat     9790
+    Kloosterdreef     9790
+    Kloosterhoek     9790
+    Kouter     9790
+    Kouterlos     9790
+    Kwadenbulk     9790
+    Langestraat     9790
+    Meganckstraat     9790
+    Merkegemhoek     9790
+    Peeshoek     9790
+    Sneppestraat     9790
+    Zwalmstraat     9790

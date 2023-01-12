@@ -1,0 +1,81 @@
+
+    Aaltersesteenweg     9800
+    Achiel Van Eechautestraat     9800
+    Antoon Van Paryspad     9800
+    August Pienstraat     9800
+    Biesbulckstraat     9800
+    Bisschop Calewaertlaan     9800
+    Bisschopstraat     9800
+    Brielstraat     9800
+    Bullenstraat     9800
+    Canteclaerplein     9800
+    Clemence Dosschestraat     9800
+    Cobbestraat     9800
+    Desiré Delcroixstraat     9800
+    Dhoye     9800
+    Dierenkoststraat     9800
+    Emiel Clausplein     9800
+    Gebroeders Nachtergaelestraat     9800
+    Gentpoortstraat     9800
+    Gentstraat     9800
+    Georges Martensstraat     9800
+    Ghesquièrestraat     9800
+    Goossijn Van Hoodeghemstraat     9800
+    Grimbaartstraat     9800
+    Guido Gezellelaan     9800
+    Hermeleinestraat     9800
+    Herpinsakker     9800
+    Hulhage     9800
+    Jan Yoensstraat     9800
+    Jules Soenenstraat     9800
+    Kaaistraat     9800
+    Kaandelbeekstraat     9800
+    Kaleshoek     9800
+    Kalkhofstraat     9800
+    Karel Picquélaan     9800
+    Kattestraat     9800
+    Klepkouterstraat     9800
+    Kongoplein     9800
+    Korenstraat     9800
+    Kortrijkstraat     9800
+    Kouter     9800
+    Krommebrug     9800
+    Kuwaardestraat     9800
+    Leiedam     9800
+    Leon Declercqstraat     9800
+    Liefkemeirestraat     9800
+    Louis Dhontstraat     9800
+    Lucien Matthyslaan     9800
+    Markt     9800
+    Martensveld     9800
+    Meulenstraat     9800
+    Monseigneur Maerelaan     9800
+    Mouterijdreef     9800
+    Neerleie     9800
+    Nobelstraat     9800
+    Oostmeersdreef     9800
+    Oude Brugsepoort     9800
+    Peter Benoitlaan     9800
+    Pieter Kintsstraat     9800
+    Priester Joris Eeckhoutlaan     9800
+    Ramstraat     9800
+    Reynaertstraat     9800
+    Ricardplein     9800
+    Schutterijstraat     9800
+    Sint-Poppoplein     9800
+    Slachthuisstraat     9800
+    Stadionlaan     9800
+    Ten Bosse     9800
+    Tieltsesteenweg     9800
+    Tijbaartstraat     9800
+    Tolpoortstraat     9800
+    Tweebruggenlaan     9800
+    Vaart Linkeroever     9800
+    Vaartlaan     9800
+    Vlasstraat     9800
+    Wakkense Heirweg     9800
+    Westaarde     9800
+    Westmeersstraat     9800
+    Witte-Kaproenenstraat     9800
+    Zwarte Baan     9800
+

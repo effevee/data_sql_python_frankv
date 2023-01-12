@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Nov  7 17:01:58 2022
-
-@author: gebruiker
-"""
-
 #
 # Copyright 2021 HiveMQ GmbH
 #
@@ -23,38 +16,10 @@ Created on Mon Nov  7 17:01:58 2022
 import time
 import paho.mqtt.client as paho
 from paho import mqtt
-import threading
-import json
-from db_actions_monday_burger import actions_db_monday_burger
 import random
 
+FIFO_PLACED = []
 
-dba = None      # variable database
-client = None   # variable client
-
-def store_order(msg,dba,client):
-    dba.connect()
-    # fetch data from mqtt structure
-    fname = msg['who']['firstname']
-    lname = msg['who']['lastname']
-    email = msg['who']['email']
-    address = msg['who']['street']+' '+msg['who']['town']
-    date_parts = msg['who']['birth'].split('-') # EUR date format
-    birth = date_parts[2]+'-'+date_parts[1]+'-'+date_parts[0]
-    # insert customer
-    customer_id = dba.insert_customer(fname,lname,birth,email,address)
-    # insert sales_order
-    sales_order_id = dba.insert_sales_order(customer_id,msg['status'])
-    # insert product_order
-    dba.insert_product_order(msg['products'],sales_order_id)
-    # time to prepare order
-    time.sleep(random.randint(2, 5))
-    # publish status via mqtt
-    if sales_order_id > 0:
-        dba.update_order_status(sales_order_id,'READY')
-        client.publish('hetcvo_sqldb_python_022_respons/frankvg_16',payload=str(sales_order_id))
-    dba.quitdb()
-    
 # setting callbacks for different events to see if it works, print the message etc.
 def on_connect(client, userdata, flags, rc, properties=None):
     print("CONNACK received with code %s." % rc)
@@ -66,34 +31,17 @@ def on_publish(client, userdata, mid, properties=None):
 # print which topic was subscribed to
 def on_subscribe(client, userdata, mid, granted_qos, properties=None):
     print("Subscribed: " + str(mid) + " " + str(granted_qos))
-
 # print message, useful for checking if it was successful
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
-    # order message
-    if 'hetcvo_sqldb_python_022/' in msg.topic:
-        # convert message to json object
-        msg = json.loads(str(msg.payload.decode()))
-        # create thread (subprocess)
-        th = threading.Thread(target=store_order,args=(msg,dba,client,))
-        # start thread
-        th.start()
-    # status message
-    elif msg.topic == 'hetcvo_sqldb_python_022_delivered/frankvg_16':
-        dba.connect()
-        sales_order_id = str(msg.payload.decode())
-        dba.update_order_status(sales_order_id, 'DELIVERED')
-        dba.quitdb()
+    topic_parts=msg.topic.split("/")
+    FIFO_PLACED.append(topic_parts[1]+":"+str(msg.payload))
+        
 
-# create database object
-dba = actions_db_monday_burger(db='dbonly_monday_burger',
-                               host='127.0.0.1',
-                               usr='dev2',
-                               pwd='hetcvo_2022.be')
 # using MQTT version 5 here, for 3.1.1: MQTTv311, 3.1: MQTTv31
 # userdata is user defined data of any type, updated by user_data_set()
 # client_id is the given name of the client
-client = paho.Client(client_id="frankvg_16", userdata=None, protocol=paho.MQTTv5)
+client = paho.Client(client_id="", userdata=None, protocol=paho.MQTTv5)
 client.on_connect = on_connect
 
 # enable TLS for secure connection
@@ -109,21 +57,27 @@ client.on_message = on_message
 client.on_publish = on_publish
 
 # subscribe to all topics of encyclopedia by using the wildcard "#"
-client.subscribe("hetcvo_sqldb_python_022/#", qos=1)
-client.subscribe('hetcvo_sqldb_python_022_delivered/frankvg_16', qos=1)
+client.subscribe("hetcvo_sqldb_python_022_respons/#", qos=1)
+
 # a single publish, this can also be done in loops, etc.
 #client.publish("encyclopedia/temperature", payload="hot", qos=1)
 
 # loop_forever for simplicity, here you need to stop the loop manually
 # you can also use loop_start and loop_stop
-#client.loop_forever()
 client.loop_start()
+
 try:
     while True:
-        # hier kunnen we eventueel algemene code in plaatsen
-        time.sleep(0.005)
-except:
-    pass
+        time.sleep(random.randint(2,8))
+        try:
+            firstin = FIFO_PLACED.pop()
+            firstin_items = firstin.split(":")
+            client.publish("hetcvo_sqldb_python_022_delivered/"+firstin_items[0], payload=firstin_items[1], qos=1)
+        except:
+            pass
+except Exception as E:
+    print(E)
 finally:
     client.loop_stop()
+    
     
