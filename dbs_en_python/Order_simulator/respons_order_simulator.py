@@ -33,9 +33,9 @@ def on_subscribe(client, userdata, mid, granted_qos, properties=None):
     print("Subscribed: " + str(mid) + " " + str(granted_qos))
 # print message, useful for checking if it was successful
 def on_message(client, userdata, msg):
-    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload.decode()))
     topic_parts=msg.topic.split("/")
-    FIFO_PLACED.append(topic_parts[1]+":"+str(msg.payload))
+    FIFO_PLACED.append(topic_parts[1]+":"+str(msg.payload.decode()))
         
 
 # using MQTT version 5 here, for 3.1.1: MQTTv311, 3.1: MQTTv31
@@ -72,8 +72,10 @@ try:
         try:
             firstin = FIFO_PLACED.pop()
             firstin_items = firstin.split(":")
-            client.publish("hetcvo_sqldb_python_022_delivered/"+firstin_items[0], payload=firstin_items[1], qos=1)
-        except:
+            print("Return:","hetcvo_sqldb_python_022_delivered/"+firstin_items[0],"payload:",str(firstin_items[1]))
+            client.publish("hetcvo_sqldb_python_022_delivered/"+firstin_items[0], payload=str(firstin_items[1]), qos=1)
+        except Exception as E:
+            print(E)
             pass
 except Exception as E:
     print(E)

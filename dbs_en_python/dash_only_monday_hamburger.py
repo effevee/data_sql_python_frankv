@@ -25,6 +25,8 @@ class localData:
     
     def __init__(self):
         self.df_food = pd.DataFrame(columns=['time','product','stock'])
+        self.df_drinks = pd.DataFrame(columns=['time','product','stock'])
+        self.df_sauces = pd.DataFrame(columns=['time','product','stock'])
         
 lcd = localData()
 dba = actions_db_monday_burger(db='dbonly_monday_burger', host='127.0.0.1')
@@ -139,18 +141,33 @@ def update_stock_status(interval):
     # opvullen dataframe zonder aanmelding
     dba.set_user('usr2')
     dba.set_password('hetcvo.be')
+
     # connectie met database
     res = dba.connect()
     if res == False:
         log('Error connection db')
         return interval
-    # dataframe opvullen
+
+    # dataframe food opvullen
     res = dba.get_product_stock(1)
     log(str(res))
     df = pd.DataFrame(res,columns=['time', 'product', 'stock'])
     lcd.df_food = pd.concat([lcd.df_food,df])
-    # test
     lcd.df_food.to_csv('test_stock_food.csv')
+
+    # dataframe drinks opvullen
+    res = dba.get_product_stock(2)
+    log(str(res))
+    df = pd.DataFrame(res,columns=['time', 'product', 'stock'])
+    lcd.df_drinks = pd.concat([lcd.df_drinks,df])
+    lcd.df_drinks.to_csv('test_stock_drinks.csv')
+
+    # dataframe sauces opvullen
+    res = dba.get_product_stock(3)
+    log(str(res))
+    df = pd.DataFrame(res,columns=['time', 'product', 'stock'])
+    lcd.df_sauces = pd.concat([lcd.df_sauces,df])
+    lcd.df_sauces.to_csv('test_stock_sauces.csv')
     dba.quitdb()
     
     return interval
@@ -158,13 +175,25 @@ def update_stock_status(interval):
 
 @app.callback(
     Output('stock_food','figure'),
+    Output('stock_drinks','figure'),
+    Output('stock_sauces','figure'),
     Input('tabs','value'))
 
 def update_stock_stat(tab):
-    #if tab == "stock":
+
+    # food
     lcd.df_food.to_csv('control_stock.csv')
     fig_food = px.line(lcd.df_food,x='time',y='stock',color='product')
-    return fig_food
+    
+    # drinks
+    lcd.df_drinks.to_csv('control_stock.csv')
+    fig_drinks = px.line(lcd.df_drinks,x='time',y='stock',color='product')
+
+    # sauces
+    lcd.df_sauces.to_csv('control_stock.csv')
+    fig_sauces = px.line(lcd.df_sauces,x='time',y='stock',color='product')
+
+    return fig_food,fig_drinks,fig_sauces
 
 
 if __name__ == '__main__':
